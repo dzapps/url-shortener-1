@@ -1,0 +1,20 @@
+{
+  "name": "expressjs",
+  "version": "1.0.0",
+  "description": "Files for my Building a Website with Node & ExpressJS course on Lynda.com",
+  "main": "app/app.js",
+  "scripts": {
+    "start": "nodemon -e css,ejs,js,json --watch app --ignore feedback.json"
+  },
+  "author": "Nishant Mor",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.24",
+    "nodemon": "^1.11.0",
+    "reload": "^1.1.1",
+    "socket.io": "^1.7.3"
+  }
+}
