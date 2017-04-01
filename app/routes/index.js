@@ -6,6 +6,7 @@ var router = express.Router();
 
 router.get('/' , function (request , response) {
     var data =  request.app.get('appData');
+    console.log("indexxx")
     response.render('index' , {
         pageTitle : 'Home',
         pageID : 'home'

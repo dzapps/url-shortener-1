@@ -26,6 +26,7 @@ router.get('/short' , function (request , response) {
 router.get('/get_all' , function (request , response) {
 
     var resultArray = [];
+    console.log("Inside Get_all")
     mongodb.connect(url , function (err ,db) {
        if(err == null){
            var cursor = db.collection('user-data').find();
@@ -38,6 +39,9 @@ router.get('/get_all' , function (request , response) {
                 db.close();
                 response.json(resultArray);
            });
+       }
+       else{
+           throw err;
        }
 
     });
@@ -92,7 +96,7 @@ router.post('/insert' ,function (request, response) {
     }
 
     var item = {
-        _id: num,
+        _id : num,
         url : link,
         created : date_created,
         clicks : 0
@@ -124,11 +128,11 @@ router.post('/insert' ,function (request, response) {
 
 
 
-router.get('/:input_id' , function (request,  response) {
+router.get('/:input_id' , function (request,  response , next) {
     console.log("some");
     //var input_id = 2747;
     var input_id = request.params.input_id;
-    console.log(input_id);
+    console.log("input id : " , input_id);
 
     var link = '';
     mongodb.connect(url , function (err , db) {
@@ -142,16 +146,20 @@ router.get('/:input_id' , function (request,  response) {
                     return console.dir(err);
                 }
                 else{
-                    (console.log(String(doc)));
-                    //var obj = JSON.parse(doc);
-                    link = link + doc['url'];
-                    (console.log(doc));
+                    if(doc) {
+                        (console.log(String(doc)));
+                        //var obj = JSON.parse(doc);
+                        link = link + doc['url'];
+                        (console.log(doc));
 
-                    console.log("link :   "  +  link);
+                        console.log("link :   " + link);
 
 
-                    response.redirect(link);
-
+                        response.redirect(link);
+                    }
+                    else{
+                        next();
+                    }
                 }
             });
 
