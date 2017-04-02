@@ -11,7 +11,7 @@ $(function() {
     function updateTable(data) {
         var output = '';
 
-        output += '<table class="table table-hover">';
+        output += '<table class="table table-hover table-responsive">';
         output += '    <thead>'
         output += '    <tr>'
         output += '     <th>Original URL</th>'
