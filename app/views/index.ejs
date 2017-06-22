@@ -69,19 +69,44 @@
         <div class="text-vertical-center">
             <h1>Simplify Your Links</h1>
             <br>
-            <form class ="url-form row" method="post" action="/insert">
+            <form class ="url-form row">
 
                 <div class="col-sm-4 col-xs-2"></div>
                 <div class="col-sm-4 col-xs-8">
-                    <input type="text" class="form-control input-lg" id="lgFormGroupInput" name = "url_name" placeholder="http://example.com">
-                    <br><button type="submit" class="btn btn-dark btn-lg">Shorten</button>
+                    <input type="text" class="form-control input-lg" id="lgFormGroupInput" name = "url_name" placeholder="http://example.com" required>
+                    <br><button type="submit" class="btn btn-dark btn-lg" id="submit_button">Shorten</button>
                 </div>
                 <div class="col-sm-4 col-xs-2"></div>
 
 
             </form>
 
-            <!--<a href="#about" class="btn btn-dark btn-lg">Find Out More</a> -->
+            <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Your Simplified Link</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Some text in the modal.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!--<a href="#about" class="btn btn-dark btn-lg">Find Out More</a> -->
         </div>
     </header>
 
@@ -110,29 +135,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h4><strong>Start Bootstrap</strong>
+                    <h4>Developed By: <strong>Nishant Mor</strong>
                     </h4>
-                    <p>3481 Melrose Place
-                        <br>Beverly Hills, CA 90210</p>
+                    <p>Indian Institute of Technology
+                        <br>Guwahati, Assam 781039</p>
                     <ul class="list-unstyled">
-                        <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
-                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:name@example.com">name@example.com</a>
+                        <li><i class="fa fa-phone fa-fw"></i> (+91) 8011026375 </li>
+                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="nishantmor27@gmail.com">nishantmor27@gmail.com</a>
                         </li>
                     </ul>
                     <br>
                     <ul class="list-inline">
                         <li>
-                            <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                            <a href="https://www.linkedin.com/in/nishantmor27"><i class="fa fa-linkedin fa-fw fa-3x"></i></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
+                            <a href="https://github.com/nishant-mor"><i class="fa fa-github fa-fw fa-3x"></i></a>
                         </li>
                     </ul>
                     <hr class="small">
-                    <p class="text-muted">Copyright &copy; Your Website 2014</p>
                 </div>
             </div>
         </div>

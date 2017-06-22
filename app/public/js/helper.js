@@ -1,9 +1,47 @@
 $(function() {
+
+    var hostname = "http://localhost:3000/";
+
     $.getJSON('get_all', updateTable);
 
     $('.feedback-url-form').submit(function(e){
         e.preventDefault();
         $.getJSON('get_all', updateTable);
+
+    });
+
+    $('#submit_button').click(function (e) {
+        e.preventDefault();
+
+        console.log("Clicked");
+        var url = $('#lgFormGroupInput').val();
+
+
+        if(url.length>0) {
+
+            console.log(url);
+            $.post("/insert", {"url_name": url}, function (data) {
+                console.log("data");
+                console.log(JSON.stringify(data));
+                newdata = JSON.parse(JSON.stringify(data));
+                link = hostname + newdata["_id"];
+                var output = 'Original URL : <a href = "' + newdata["url"] + '">' + newdata["url"] + '</a>' + ' <br> Shortened URL : <a href = "' + link + '">' + link + '</a>';
+                $('.modal-body').html(output);
+                $('#myModal').modal('show');
+
+            });
+
+            $.getJSON('get_all', updateTable);
+
+        }
+        else{
+            var output = "Empty Link";
+            $('.modal-body').html(output);
+            $('#myModal').modal('show');
+
+            console.log("Empty Input");
+        }
+
 
     });
 
@@ -33,10 +71,9 @@ $(function() {
         $.each(data,function(key, item) {
 
 
-            var hostname ="localhost:3000/";
             output +='<tr>';
             output +='<td><a href ="'+  item.url + '">'+ item.url + '</a></td>'
-            output +='<td><a href ="http://'+ hostname + item._id + '">'+ hostname + item._id + '</a></td>'
+            output +='<td><a href ="'+ hostname + item._id + '">'+ hostname + item._id + '</a></td>'
             output +='<td>'+ item.clicks + '</td>'
             output +='<td>'+ item.created + '</td>'
             output +='</tr>';

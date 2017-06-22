@@ -9,7 +9,7 @@ var router = express.Router();
 var mongodb = require('mongodb').MongoClient;
 var assert = require('assert');
 
-var url = 'mongodb://localhost:27017/test'
+var url = 'mongodb://test1:testing1234@ds133932.mlab.com:33932/user-name'
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended : false}));
 
@@ -68,7 +68,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended : false}));
 
 
-router.post('/insert' ,function (request, response) {
+router.post('/insert' ,function (request, response,next) {
     console.log(request.body);
     var num = createid();
 
@@ -118,14 +118,15 @@ router.post('/insert' ,function (request, response) {
                 console.log("ID for the item" + item['_id']);
                 console.log("URL" + String(item['url']));
                 console.log("Item Inserted")
+
                 db.close();
+
             });
         }
     });
-
-    response.redirect('/');
+    response.json(item);
+    //response.redirect('/?id='+num);
 });
-
 
 
 router.get('/:input_id' , function (request,  response , next) {
@@ -141,6 +142,8 @@ router.get('/:input_id' , function (request,  response , next) {
         }
         else{
             console.log("Inside Connect");
+
+            db.collection('user-data').update({'_id': String(input_id)} , { $inc : { "clicks" : 1 }})
             db.collection('user-data').findOne({'_id': String(input_id) } , function (err, doc) {
                 if(err){
                     return console.dir(err);
