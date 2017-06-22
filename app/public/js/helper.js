@@ -1,6 +1,6 @@
 $(function() {
 
-    var hostname = "http://localhost:3000/";
+    var hostname = "https://tnurl.herokuapp.com/";
 
     $.getJSON('get_all', updateTable);
 
